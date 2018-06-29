@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+
+    .wrapper {
+        max-width: 300px;
+        margin: 100px auto;
+        font-size: 30px;
+        color: #839202;
+    }
+</style>
+
+<body>
+
+    <div class="wrapper">
+        <ul>
+            <li data-time="12:24">video 54</li>
+            <li data-time="13:24">video 34</li>
+            <li data-time="5:34">video 76</li>
+            <li data-time="0:44">video 64</li>
+            <li data-time="8:34">video 32</li>
+            <li data-time="4:24">video 45</li>
+            <li data-time="3:4">video 23</li>
+            <li data-time="2:34">video 34</li>
+            <li data-time="5:7">video 64</li>
+            <li data-time="2:25">video 22</li>
+            <li data-time="5:4">video 26</li>
+            <li data-time="6:54">video 43</li>
+            <li data-time="1:4">video 58</li>
+            <li data-time="2:43">video 35</li>
+            <li data-time="4:24">video 73</li>
+            <li data-time="3:4">video 56</li>
+            <li data-time="4:34">video 42</li>
+        </ul>
+    </div>
+    60
+
+    <script>
+        var timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+
+        var seconds = timeNodes.map(node => node.dataset.time).map(timeCode => {
+            var [mins, sec] = timeCode.split(":").map(parseFloat);
+            return (mins * 60) + sec;
+        }).reduce((total, videoSecons) => total + videoSecons);
+        console.log(seconds);
+
+        var secondLeft = seconds;
+        var hours = Math.floor(secondLeft / 3600);
+        secondLeft = secondLeft % 3600;
+        var mins = Math.floor(secondLeft / 60);
+        console.log(mins);
+    </script>
+</body>
+
+</html>
